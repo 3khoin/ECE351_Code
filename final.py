@@ -51,8 +51,10 @@ make_stem(ax1, freq, X_mag)
 plt.grid()
 plt.ylabel('Magnitude of X(s)')
 
+# 60 Hz, Magnitude ~ .75
+
 plt.subplot(ax2)
-plt.xlim(1800, 2000)
+plt.xlim(1750, 2050)
 make_stem(ax2, freq, X_mag)
 plt.grid()
 
@@ -60,7 +62,6 @@ plt.subplot(ax3)
 make_stem(ax3, freq, X_phi)
 plt.grid()
 plt.ylabel('Phase of X(s)')
-plt.xlabel('f [Hz]')
 
 plt.subplot(ax4)
 plt.xlim(-150, 150)
