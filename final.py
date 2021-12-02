@@ -41,6 +41,10 @@ def make_stem(ax, x, y, color='k', style='solid', label='', linewidths=2.5, **kw
     ax.axhline(x[0], x[-1], 0, color='r')
     ax.vlines(x, 0, y, color=color, linestyles=style, label=label, linewidths=linewidths)
     ax.set_ylim([1.05*y.min(), 1.05*y.max()])
+    
+def dB(x):
+    y = 20 * np.log10(x)
+    return y
 
 freq, X_mag, X_phi = fft(sensor_sig)
 
@@ -59,12 +63,25 @@ make_stem(ax2, freq, X_mag)
 plt.grid()
 
 plt.subplot(ax3)
-make_stem(ax3, freq, X_phi)
+plt.xlim(0, 1700)
+make_stem(ax3, freq, X_mag)
 plt.grid()
-plt.ylabel('Phase of X(s)')
 
 plt.subplot(ax4)
-plt.xlim(-150, 150)
-make_stem(ax4, freq, X_phi)
+plt.xlim(49750, 51250)
+make_stem(ax4, freq, X_mag)
+plt.xlabel('Frequency [Hz]')
 plt.grid()
-plt.xlabel('f [Hz]')
+
+# =============================================================================
+# plt.subplot(ax3)
+# make_stem(ax3, freq, X_phi)
+# plt.grid()
+# plt.ylabel('Phase of X(s)')
+# 
+# plt.subplot(ax4)
+# plt.xlim(-150, 150)
+# make_stem(ax4, freq, X_phi)
+# plt.grid()
+# plt.xlabel('f [Hz]')
+# =============================================================================
